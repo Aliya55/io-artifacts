@@ -513,7 +513,7 @@ function loadWorkflow() {
 	
         echo "Updating last scan date for perfomed security activities"
         header='Authorization: Bearer '$io_token''
-        http_response=$(curl -X POST -H 'Content-Type:application/json' -H 'Accept:application/json' -H "${header}" -o result.json -w "%{http_code}" -d @scandate.json ${io_url}/io/api/manifest/update/scandate)
+        http_response=$(curl -X POST -H 'Content-Type:application/json' -H 'Accept:application/json' -H "${header}" -o result.json -w "%{http_code}" -d @scandate.json ${io_url}/io/api/ioiq/manifest/update/scandate)
         cat result.json
         printf "\n"
         if [ "$http_response" != 200 ] && [ "$http_response" != 201 ]; then
