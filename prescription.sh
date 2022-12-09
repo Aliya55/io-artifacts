@@ -548,7 +548,7 @@ function getIOPrescription() {
     if [ "$persona" = "devsecops" ] ; then
         API="update"
     else
-        API="ioiq/update/persona/$persona"
+        API="update/persona/$persona"
     fi
 
     header='Authorization: Bearer '$io_token''
