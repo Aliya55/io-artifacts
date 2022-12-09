@@ -564,7 +564,7 @@ function getIOPrescription() {
     fi
 	
     printf "\nIO Prescription -->\n"
-    http_response=$(curl -X POST -H 'Content-Type:application/json' -H 'Accept:application/json' -H "${header}" -o result.json -w "%{http_code}" -d @data.json ${io_url}/io/api/manifest/${API})
+    http_response=$(curl -X POST -H 'Content-Type:application/json' -H 'Accept:application/json' -H "${header}" -o result.json -w "%{http_code}" -d @data.json ${io_url}/io/api/ioiq/manifest/${API})
     cat result.json
     if [ "$http_response" != 200 ] && [ "$http_response" != 201 ]; then
     	exit_program "Error: API /io/api/manifest/${API} returned ${http_response}"
@@ -604,7 +604,7 @@ function create_io_asset () {
     validate_values "IO_SERVER_TOKEN" "$io_token"
     validate_values "IO_ASSET_ID" "$asset_id"
 
-    onBoardingResponse=$(curl --location --request POST "$io_url/io/api/applications/update" \
+    onBoardingResponse=$(curl --location --request POST "$io_url/io/api/ioiq/applications/update" \
     --header 'Content-Type: application/json' \
     --header "Authorization: Bearer $io_token" \
     --data-raw '{
